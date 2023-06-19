@@ -231,6 +231,7 @@ do "$dofile/00b_own_programs.do"
 	forval x=4/4{
 	append using "$output/`Y'_1_`x'"
 	rename (B SE) (B`x' SE`x')
+	replace B = B/1.8 if t>-3&t<0
 	gen B`x'inf =  B`x'- 1.96*SE`x'
 	gen B`x'sup =  B`x'+ 1.96*SE`x'
 	save  "$output/graph",replace
